@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AKRO Research — AI Logo Variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @font-face {
+    font-family: 'Aktiv Grotesk';
+    src: local('Aktiv Grotesk'), local('AktivGrotesk-Regular');
+  }
+
+  :root {
+    --bg-dark: #0A0A0F;
+    --bg-light: #FFFFFF;
+    --border-dark: #1E1E2E;
+    --border-light: #E0E0E0;
+    
+    /* Aurum Palette */
+    --aurum-gold: #B8960C;
+    --aurum-black: #0D0D0D;
+    
+    /* Zenith Palette */
+    --zenith-slate: #2B2D42;
+    --zenith-silver: #9899A6;
+    
+    /* Core Palette */
+    --core-graphite: #212121;
+    --core-slate-grey: #757575;
+    
+    --font-heading: 'Aktiv Grotesk', 'Inter', system-ui, sans-serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    background: var(--bg-dark);
+    color: #F0F2F6;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 80px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    background: rgba(10, 10, 15, 0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .nav-brand {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  header {
+    padding: 140px 40px 60px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: #9899A6;
+    line-height: 1.6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    padding: 0 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid transparent;
+  }
+
+  .card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--aurum-black);
+    border-bottom-color: var(--border-dark);
+  }
+
+  .variant-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .palette-tag {
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .palette-aurum { background: rgba(184, 150, 12, 0.15); color: var(--aurum-gold); }
+  .palette-zenith { background: rgba(152, 153, 166, 0.15); color: var(--zenith-silver); }
+  .palette-core { background: rgba(117, 117, 117, 0.15); color: var(--core-slate-grey); }
+  .palette-hybrid { background: rgba(255, 255, 255, 0.1); color: #FFF; border: 1px solid rgba(255,255,255,0.2); }
+
+  .logo-container {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 300px;
+    overflow: hidden;
+  }
+  
+  .logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">AKRO Research — AI Logo Explorations</div>
+</nav>
+
+<header>
+  <h1>Logo Lockup Variations</h1>
+  <p class="subtitle">10 variations exploring the Aurum, Zenith, and Core color palettes, generated via Nano Banana PRO 3.1 preview.</p>
+</header>
+
+<div class="grid">
+  <!-- 1. Aurum Horizontal -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">1. Aurum Horizontal</div>
+      <div class="palette-tag palette-aurum">Aurum</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var1.png" alt="Aurum Horizontal" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 2. Aurum Stacked -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">2. Aurum Stacked</div>
+      <div class="palette-tag palette-aurum">Aurum</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var2.png" alt="Aurum Stacked" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 3. Zenith Horizontal -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">3. Zenith Horizontal</div>
+      <div class="palette-tag palette-zenith">Zenith</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var3.png" alt="Zenith Horizontal" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 4. Zenith Stacked -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">4. Zenith Stacked</div>
+      <div class="palette-tag palette-zenith">Zenith</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var4.png" alt="Zenith Stacked" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 5. Core Horizontal -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">5. Core Horizontal</div>
+      <div class="palette-tag palette-core">Core</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var5.png" alt="Core Horizontal" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 6. Core Stacked -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">6. Core Stacked</div>
+      <div class="palette-tag palette-core">Core</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var6.png" alt="Core Stacked" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 7. Aurum Dark Horizontal -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">7. Aurum Dark Horizontal</div>
+      <div class="palette-tag palette-aurum">Aurum</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var7.png" alt="Aurum Dark Horizontal" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 8. Zenith Dark Horizontal -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">8. Zenith Dark Horizontal</div>
+      <div class="palette-tag palette-zenith">Zenith</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var8.png" alt="Zenith Dark Horizontal" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 9. Core Light Stacked -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">9. Core Light Stacked</div>
+      <div class="palette-tag palette-core">Core</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var9.png" alt="Core Light Stacked" loading="lazy">
+    </div>
+  </div>
+
+  <!-- 10. Premium Hybrid Stacked -->
+  <div class="card">
+    <div class="card-header">
+      <div class="variant-name">10. Premium Hybrid Stacked</div>
+      <div class="palette-tag palette-hybrid">Hybrid</div>
+    </div>
+    <div class="logo-container">
+      <img src="variations/var10.png" alt="Premium Hybrid Stacked" loading="lazy">
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

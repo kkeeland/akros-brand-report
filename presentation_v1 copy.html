@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akro Research — Brand Identity Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  @font-face {
+    font-family: 'Aktiv Grotesk';
+    src: local('Aktiv Grotesk'), local('AktivGrotesk-Regular');
+  }
+
+  :root {
+    --bg-base: #FAFAFC;
+    --bg-surface: #FFFFFF;
+    --border: rgba(0, 0, 0, 0.08);
+    --text-primary: #1C1C21;
+    --text-muted: #6B6D7A;
+    
+    /* Brand Colors (Aurum focus for premium feel) */
+    --brand-gold: #B8960C;
+    --brand-gold-glow: rgba(184, 150, 12, 0.1);
+    
+    --font-heading: 'Outfit', 'Inter', system-ui, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-body: 'Aktiv Grotesk', 'Inter', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-base);
+  }
+
+  body {
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── UTILITIES & EFFECTS ── */
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Smooth Reveal Animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(250,250,252,0.95) 0%, rgba(250,250,252,0) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  .nav-logo {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  .nav-status {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-status::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-gold);
+    box-shadow: 0 0 10px var(--brand-gold);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.5; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding-top: 80px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--brand-gold-glow) 0%, transparent 70%);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(48px, 8vw, 110px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    color: var(--text-primary);
+  }
+
+  .hero p {
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+  }
+
+  .scroll-indicator:hover {
+    opacity: 0.8;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--text-primary) 0%, transparent 100%);
+    animation: scrollLine 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: top;
+  }
+
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); }
+    50% { transform: scaleY(1); }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ── SECTION STYLES ── */
+  section {
+    padding: 160px 0;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    margin-bottom: 64px;
+    text-align: center;
+  }
+
+  .section-label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── THE MARK ── */
+  .showcase-grid-alt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .showcase-text h3 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .showcase-text p {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .feature-list li {
+    font-size: 15px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  }
+
+  .feature-list li::before {
+    content: '✦';
+    color: var(--brand-gold);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .image-stage {
+    position: relative;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+
+  .image-stage::after {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .image-stage img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .image-stage:hover img {
+    transform: scale(1.05);
+  }
+
+  /* ── FULL WIDTH SHOWCASE (Lockup & Mockup) ── */
+  .full-showcase {
+    width: 100%;
+    margin: 40px 0;
+    overflow: hidden;
+  }
+
+  .full-showcase img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+  }
+
+  .image-caption {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── PRODUCT DISPLAY ── */
+  .product-stage {
+    background: radial-gradient(circle at center, rgba(184, 150, 12, 0.05) 0%, transparent 70%);
+    padding: 80px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background-color: var(--bg-surface);
+    margin-bottom: 64px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.02);
+  }
+
+  .product-stage img {
+    max-width: 100%;
+    max-height: 700px;
+    object-fit: contain;
+    filter: drop-shadow(0 40px 60px rgba(0,0,0,0.15));
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .product-stage:hover img {
+    transform: translateY(-10px) scale(1.02);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 80px 40px;
+    text-align: center;
+    background: var(--bg-surface);
+  }
+
+  .footer-logo {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+  }
+
+  .footer-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .showcase-grid-alt {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .showcase-grid-alt > div:first-child {
+      order: 2;
+    }
+    .showcase-grid-alt > div:last-child {
+      order: 1;
+    }
+    section { padding: 100px 0; }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 24px; }
+    nav { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Akro</div>
+  <div class="nav-status">V1 Brand Proposal</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="container hero-content">
+    <span class="hero-eyebrow reveal">Brand Identity 2025</span>
+    <h1 class="reveal reveal-delay-1">Defining the Future of Premium Research</h1>
+    <p class="reveal reveal-delay-2">A masterclass in restraint, precision, and authority. The new visual identity for Akro Research.</p>
+  </div>
+  <div class="scroll-indicator reveal reveal-delay-3">
+    <div class="scroll-line"></div>
+    <span style="font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;">Explore</span>
+  </div>
+</section>
+
+<!-- THE MARK -->
+<section id="mark">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Core Element</span>
+      <h2 class="section-title">The Apex Mark</h2>
+    </div>
+    
+    <div class="showcase-grid-alt">
+      <div class="showcase-text reveal">
+        <h3>Precision & Ascent</h3>
+        <p>The Akro mark represents the pinnacle of scientific achievement. The sharp geometry evokes absolute precision, while the upward trajectory symbolizes advancement, superiority, and the rigorous standards of our research peptides.</p>
+        <ul class="feature-list">
+          <li>Engineered symmetry for flawless scaling across digital and printed assets.</li>
+          <li>Contained within a perfect circle to represent wholeness and the complete research cycle.</li>
+          <li>Minimalist execution ensures immediate recognition without reliance on color.</li>
+        </ul>
+      </div>
+      <div class="glass-panel image-stage reveal reveal-delay-1">
+        <img src="v1/mark.png" alt="Akro Research Apex Mark">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE LOCKUP -->
+<section id="lockup" style="background: rgba(0,0,0,0.01);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Identity System</span>
+      <h2 class="section-title">The Primary Lockup</h2>
+      <p style="color: var(--text-muted); max-width: 600px; margin: 16px auto 0; font-size: 18px;">Balancing the stark authority of the Apex Mark with modern, technical typography.</p>
+    </div>
+
+    <div class="full-showcase glass-panel reveal reveal-delay-1" style="padding: 80px 40px; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at top, rgba(0,0,0,0.03) 0%, transparent 60%);">
+      <img src="v1/lockup.png" alt="Akro Research Primary Lockup" style="max-height: 400px; width: auto; box-shadow: none;">
+    </div>
+    <div class="image-caption reveal reveal-delay-2">Horizontal Lockup — Set in customized Aktiv Grotesk.</div>
+  </div>
+</section>
+
+<!-- APPLICATION: PRODUCT -->
+<section id="product">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Physical Application</span>
+      <h2 class="section-title">Product Execution</h2>
+    </div>
+
+    <div class="product-stage reveal reveal-delay-1">
+      <img src="v1/peptide-bottle.png" alt="Akro Research Peptide Bottle Rendering">
+    </div>
+
+    <div class="showcase-grid-alt" style="gap: 40px;">
+      <div class="reveal">
+        <h3 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 16px;">Vial Presentation</h3>
+        <p style="color: var(--text-muted); line-height: 1.7;">The brand system is designed specifically to elevate the physical product. Dark amber/black glass combined with high-contrast, minimalist labeling instantly communicates a clinical, premium grade standard.</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <h3 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 16px;">Visual Hierarchy</h3>
+        <p style="color: var(--text-muted); line-height: 1.7;">Information is structured for clarity in a laboratory setting. The identity does not overpower the specific product data, but rather frames it with quiet authority.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION: CONTEXT -->
+<section id="context" style="border-bottom: none;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Brand World</span>
+      <h2 class="section-title">In Context</h2>
+    </div>
+
+    <div class="full-showcase reveal reveal-delay-1">
+      <img src="v1/mockup.png" alt="Akro Research Brand Applications Mockup">
+    </div>
+    <div class="image-caption reveal reveal-delay-2">Stationery, Packaging, and Digital Assets living harmoniously.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">AKRO</div>
+  <div class="footer-meta">Brand Identity Presentation v1 &copy; 2025</div>
+</footer>
+
+<script>
+  // Simple intersection observer for reveal animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => observer.observe(el));
+    
+    // Trigger initial hero elements immediately
+    setTimeout(() => {
+      document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('active'));
+    }, 100);
+  });
+</script>
+
+</body>
+</html>
